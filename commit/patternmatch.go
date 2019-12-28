@@ -5,11 +5,11 @@ import (
 	"regexp"
 )
 
-// patternMatch checks whether the given msg follows proper style or out
+// PatternMatch checks whether the given msg follows proper style or out
 // the pattern is defined under getPattern and
 // built in regexp.MatchString check the format of commit message
 // if it fails, it let users know which rules they have to follow
-func PatternMatch(m CommitMessage) (errMsg string, ok bool) {
+func PatternMatch(m message) (errMsg string, ok bool) {
 	p := getPattern()
 
 	mStr := string(m)

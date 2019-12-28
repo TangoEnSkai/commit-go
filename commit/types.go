@@ -6,8 +6,7 @@ import (
 )
 
 type (
-	CommitMessage string
-
+	message    string
 	commitType uint8
 )
 
@@ -59,12 +58,12 @@ func (t commitType) String() string {
 	}
 }
 
-// checkCommitType check a type of commit out from the commit message
-func CheckCommitType(msg CommitMessage) (errMsg string, ok bool) {
+// CheckCommitType check a type of commit out from the commit message
+func CheckCommitType(m message) (errMsg string, ok bool) {
 	var b strings.Builder
 
-	for i, n := 0, len(msg); i < n; i++ {
-		c := msg[i]
+	for i, n := 0, len(m); i < n; i++ {
+		c := m[i]
 
 		// this is attempt to get the type before actual scope or commit message
 		if c == ':' || c == '(' {
@@ -91,8 +90,8 @@ func CheckCommitType(msg CommitMessage) (errMsg string, ok bool) {
 	case test.String():
 	default:
 		errMsg = fmt.Sprintf(
-			"%s has invalid commit type\n\tavailable commit types are:\n\t%s",
-			msg, printTypes(),
+			"%v has invalid commit type\n\tavailable commit types are:\n\t%v",
+			m, printTypes(),
 		)
 
 		return errMsg, false
