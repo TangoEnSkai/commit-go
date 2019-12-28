@@ -6,7 +6,7 @@ import (
 )
 
 type (
-	message    string
+	Message    string
 	commitType uint8
 )
 
@@ -59,7 +59,7 @@ func (t commitType) String() string {
 }
 
 // CheckCommitType check a type of commit out from the commit message
-func CheckCommitType(m message) (errMsg string, ok bool) {
+func CheckCommitType(m Message) (errMsg string, ok bool) {
 	var b strings.Builder
 
 	for i, n := 0, len(m); i < n; i++ {

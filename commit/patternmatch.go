@@ -9,7 +9,7 @@ import (
 // the pattern is defined under getPattern and
 // built in regexp.MatchString check the format of commit message
 // if it fails, it let users know which rules they have to follow
-func PatternMatch(m message) (errMsg string, ok bool) {
+func PatternMatch(m Message) (errMsg string, ok bool) {
 	p := getPattern()
 
 	mStr := string(m)

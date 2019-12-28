@@ -10,7 +10,7 @@ const (
 // CheckLength is checking the length of commit messages
 // for the commit that has proper length, it will NOOP
 // for longer commit messages, it prints the error message and stop the program
-func CheckLength(m message) (errStr string, ok bool) {
+func CheckLength(m Message) (errStr string, ok bool) {
 	// need to check length
 	l := len(m)
 
