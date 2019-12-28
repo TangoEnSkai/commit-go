@@ -8,15 +8,13 @@ import (
 type (
 	CommitMessage string
 
-	commitType    uint8
+	commitType uint8
 )
 
 // const that we are using
 // from unknown to the end, it defines the type of commits
 // if you want to add another type, please add in alphabetical order for better readability
 const (
-
-
 	breakingChange commitType = iota // breaking change for our service
 	build                            // change that build system or external dependencies
 	chore                            // something else
