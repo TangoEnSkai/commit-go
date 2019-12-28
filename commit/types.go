@@ -15,8 +15,7 @@ type (
 // from unknown to the end, it defines the type of commits
 // if you want to add another type, please add in alphabetical order for better readability
 const (
-	maxLength = 60 // maximum length of a commit message
-	minLength = 10 // minimum length of a commit message
+
 
 	breakingChange commitType = iota // breaking change for our service
 	build                            // change that build system or external dependencies

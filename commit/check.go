@@ -2,6 +2,10 @@ package commit
 
 import "fmt"
 
+const (
+	maxLength = 60 // maximum length of a commit message
+	minLength = 10 // minimum length of a commit message
+)
 // checkLength is checking the length of commit messages
 // for the commit that has proper length, it will NOOP
 // for longer commit messages, it prints the error message and stop the program
