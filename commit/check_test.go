@@ -6,15 +6,13 @@ import (
 	"testing"
 )
 
-
-
 func TestCheckLength(t *testing.T) {
 	const (
-		minLength = 10
-		maxLength = 60
-		shortCommit = "short"
+		minLength         = 10
+		maxLength         = 60
+		shortCommit       = "short"
 		validLengthCommit = "the commit length is good enough"
-		longCommit = "this commit is toooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo long"
+		longCommit        = "this commit is toooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo long"
 	)
 	type args struct {
 		m commit.Message
@@ -31,7 +29,7 @@ func TestCheckLength(t *testing.T) {
 				m: validLengthCommit,
 			},
 			wantErrStr: "",
-			wantOk: true,
+			wantOk:     true,
 		},
 		{
 			name: "failed/too short",
@@ -39,7 +37,7 @@ func TestCheckLength(t *testing.T) {
 				m: shortCommit,
 			},
 			wantErrStr: fmt.Sprintf("\tthe commit `%s` is too short: got(%d), need >= (%d)", shortCommit, len(shortCommit), minLength),
-			wantOk: false,
+			wantOk:     false,
 		},
 		{
 			name: "failed/too long",
@@ -47,7 +45,7 @@ func TestCheckLength(t *testing.T) {
 				m: longCommit,
 			},
 			wantErrStr: fmt.Sprintf("\tthe commit `%s` is too long: got(%d), need <= (%d)", longCommit, len(longCommit), maxLength),
-			wantOk: false,
+			wantOk:     false,
 		},
 	}
 

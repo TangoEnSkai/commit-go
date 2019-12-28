@@ -53,6 +53,3 @@ func initialise() *string {
 
 	return &pathToCommitMsg
 }
-
-
-
