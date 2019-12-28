@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/TangoEnSkai/commit-go/src/commit"
+	"github.com/TangoEnSkai/commit-go/commit"
 )
 
 // in this main program, we check incoming commit message for:

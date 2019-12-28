@@ -9,18 +9,19 @@ import (
 // the pattern is defined under getPattern and
 // built in regexp.MatchString check the format of commit message
 // if it fails, it let users know which rules they have to follow
-func PatternMatch(msg string) (errMsg string, ok bool) {
+func PatternMatch(m CommitMessage) (errMsg string, ok bool) {
 	p := getPattern()
 
+	mStr := string(m)
 	// style check
-	matched, err := regexp.MatchString(p, msg)
+	matched, err := regexp.MatchString(p, mStr)
 	if err != nil {
-		return fmt.Errorf("error whilst checking commit message %s: %w", msg, err).Error(), false
+		return fmt.Errorf("error whilst checking commit message %v: %w", m, err).Error(), false
 	}
 
 	// since this function is final check, print out the commit message check result
 	if !matched {
-		return fmt.Sprintf("invalid commit message. \n\tmust follow this rule: %s\n\t\t", p), false
+		return fmt.Sprintf("invalid commit message. \n\tmust follow this rule: %v\n\t\t", p), false
 	}
 
 	return "", matched

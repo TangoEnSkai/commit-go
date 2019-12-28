@@ -108,7 +108,7 @@ func CheckCommitType(msg CommitMessage) (errMsg string, ok bool) {
 // this is only used for letting user know when they failed to commit
 // because of type mismatch issue
 func printTypes() string {
-	const types = `(BREAKING CHANGE|build|chore|ci|docs|feat|fix|perf|refactor|style|test)`
+	const types = `(BREAKING CHANGE | build | chore | ci | docs | feat | fix | perf | refactor | style | test)`
 
 	return types
 }

@@ -21,12 +21,14 @@ func Read(path string) (CommitMessage, error) {
 // newFirstLine extracts a commit's header from entire commit messages
 // entire commit message means header, body, and footer
 // in this program, we want to check only the style of header
-func NewFirstLine(m string) string {
-	lines := strings.Split(m, "\n")
+func NewFirstLine(m CommitMessage) CommitMessage {
+	lines := strings.Split(string(m), "\n")
 
 	if len(lines) == 0 {
 		panic(fmt.Errorf("no line break in the commit message"))
 	}
 
-	return lines[0]
+	ret := CommitMessage(lines[0])
+
+	return ret
 }
