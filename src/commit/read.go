@@ -15,7 +15,7 @@ func Read(path string) (CommitMessage, error) {
 		return "", fmt.Errorf("error whilst reading file %s: %w", path, err)
 	}
 
-	return string(bytes), nil
+	return CommitMessage(string(bytes)), nil
 }
 
 // newFirstLine extracts a commit's header from entire commit messages

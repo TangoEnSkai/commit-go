@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/TangoEnSkai/commit-go/commit"
-	"github.com/TangoEnSkai/commit-go/info"
+	"github.com/TangoEnSkai/commit-go/src/commit"
 )
 
 // in this main program, we check incoming commit message for:
@@ -17,30 +16,30 @@ import (
 func main() {
 	origin := initialise()
 
-	commitMsg, err := commit.Read(origin)
+	commitMsg, err := commit.Read(*origin)
 	if err != nil {
-		info.Print(commitMsg, err.Error())
+		commit.Print(commitMsg, err.Error())
 		os.Exit(1)
 	}
 
-	commitHeader := commit.NewFirstLine(commitMsg)
+	header := commit.NewFirstLine(commitMsg)
 
 	// 1. check the commit message is shorter than maximum length
-	errMsg, ok := commit.CheckLength(commitHeader)
+	errMsg, ok := commit.CheckLength(header)
 	if !ok {
-		info.PrintAndExit(commitMsg, errMsg)
+		commit.PrintAndExit(commitMsg, errMsg)
 	}
 
 	// 2. check commit type
-	errMsg, ok = commit.CheckCommitType(commitHeader)
+	errMsg, ok = commit.CheckCommitType(header)
 	if !ok {
-		info.PrintAndExit(commitMsg, errMsg)
+		commit.PrintAndExit(commitMsg, errMsg)
 	}
 
 	// 3. check style
-	errMsg, ok = commit.PatternMatch(commitHeader)
+	errMsg, ok = commit.PatternMatch(header)
 	if !ok {
-		info.PrintAndExit(commitMsg, errMsg)
+		commit.PrintAndExit(commitMsg, errMsg)
 	}
 }
 
