@@ -41,7 +41,9 @@ func TestPatternMatch(t *testing.T) {
 			wantOk: false,
 		},
 	}
+
 	for _, tc := range tests {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			gotErrMsg, gotOk := commit.PatternMatch(tc.args.m)
 			if gotErrMsg != tc.wantErrMsg {
