@@ -1,8 +1,8 @@
-package commit_test
+package committer_test
 
 import (
 	"fmt"
-	"github.com/TangoEnSkai/commit-go/commit"
+	"github.com/TangoEnSkai/committer-go/committer"
 	"testing"
 )
 
@@ -15,7 +15,7 @@ func TestCheckLength(t *testing.T) {
 		longCommit        = "this commit is toooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo long"
 	)
 	type args struct {
-		m commit.Message
+		m committer.Message
 	}
 	tests := []struct {
 		name       string
@@ -52,7 +52,7 @@ func TestCheckLength(t *testing.T) {
 	for _, tc := range tests {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
-			gotErrStr, gotOk := commit.CheckLength(tc.args.m)
+			gotErrStr, gotOk := committer.CheckLength(tc.args.m)
 			if gotErrStr != tc.wantErrStr {
 				t.Errorf("CheckLength() gotErrStr = %v, want %v", gotErrStr, tc.wantErrStr)
 			}

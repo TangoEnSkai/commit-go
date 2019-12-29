@@ -1,8 +1,8 @@
-package commit_test
+package committer_test
 
 import (
 	"fmt"
-	"github.com/TangoEnSkai/commit-go/commit"
+	"github.com/TangoEnSkai/committer-go/committer"
 	"testing"
 )
 
@@ -16,7 +16,7 @@ func TestPatternMatch(t *testing.T) {
 	errorMessage := fmt.Sprintf("invalid commit message. \n\tmust follow this rule: %v\n\t\t", pattern)
 
 	type args struct {
-		m commit.Message
+		m committer.Message
 	}
 	tests := []struct {
 		name       string
@@ -45,7 +45,7 @@ func TestPatternMatch(t *testing.T) {
 	for _, tc := range tests {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
-			gotErrMsg, gotOk := commit.PatternMatch(tc.args.m)
+			gotErrMsg, gotOk := committer.PatternMatch(tc.args.m)
 			if gotErrMsg != tc.wantErrMsg {
 				t.Errorf("PatternMatch() gotErrMsg = %v, want %v", gotErrMsg, tc.wantErrMsg)
 			}
