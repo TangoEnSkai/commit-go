@@ -1,2 +1,3 @@
-# commit-go
+# committer-go
+
 Conventional Commit Toolkit
